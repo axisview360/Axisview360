@@ -22,13 +22,14 @@
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;}
 body{
   background:var(--navy);
   color:var(--white);
   font-family:'Barlow',sans-serif;
   font-weight:400;
   overflow-x:hidden;
+  max-width:100%;
   cursor:default;
 }
 
@@ -102,6 +103,8 @@ nav{
   display:flex;align-items:center;
   position:relative;overflow:hidden;
   padding-top:80px;
+  width:100%;
+  max-width:100vw;
 }
 .hero-bg{
   position:absolute;inset:0;
@@ -117,6 +120,7 @@ nav{
     linear-gradient(rgba(77,184,232,.04) 1px,transparent 1px),
     linear-gradient(90deg,rgba(77,184,232,.04) 1px,transparent 1px);
   background-size:60px 60px;
+  overflow:hidden;
 }
 /* Big circle accent */
 .hero-circle{
@@ -125,6 +129,12 @@ nav{
   border:1px solid rgba(77,184,232,.08);
   pointer-events:none;
   animation:ring-spin-cw 60s linear infinite;
+}
+@media(max-width:768px){
+  .hero-circle{
+    width:320px;height:320px;
+    right:-160px;
+  }
 }
 .hero-circle::before{
   content:'';position:absolute;inset:60px;border-radius:50%;
@@ -563,6 +573,9 @@ input::placeholder,textarea::placeholder{color:rgba(240,244,248,.25)}
   .cta-actions{flex-direction:column;align-items:center}
 }
 
+@media(max-width:768px){
+  .hero-ring-dot-outer,.hero-ring-dot-inner{display:none;}
+}
 @media(max-width:480px){
   .container{padding:0 16px}
   .hero-title{font-size:clamp(44px,13vw,64px)}
@@ -645,10 +658,10 @@ input::placeholder,textarea::placeholder{color:rgba(240,244,248,.25)}
   <div class="hero-circle" id="hero-ring-1"></div>
   <div class="container">
     <!-- Animated ring dots -->
-  <div style="position:absolute;right:-120px;top:50%;width:700px;height:700px;transform:translateY(-50%);pointer-events:none;animation:ring-spin-cw 60s linear infinite;">
+  <div class="hero-ring-dot-outer" style="position:absolute;right:-120px;top:50%;width:700px;height:700px;transform:translateY(-50%);pointer-events:none;animation:ring-spin-cw 60s linear infinite;">
     <div style="position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 10px var(--blue);transform:translateX(-50%);"></div>
   </div>
-  <div style="position:absolute;right:-120px;top:50%;width:580px;height:580px;transform:translate(60px,-50%);pointer-events:none;animation:ring-spin-ccw 40s linear infinite;">
+  <div class="hero-ring-dot-inner" style="position:absolute;right:-120px;top:50%;width:580px;height:580px;transform:translate(60px,-50%);pointer-events:none;animation:ring-spin-ccw 40s linear infinite;">
     <div style="position:absolute;bottom:-5px;left:50%;width:7px;height:7px;border-radius:50%;background:var(--blue-dim);box-shadow:0 0 8px var(--blue-dim);transform:translateX(-50%);"></div>
   </div>
   <div class="hero-content">
@@ -658,7 +671,7 @@ input::placeholder,textarea::placeholder{color:rgba(240,244,248,.25)}
         <span class="line2">BUSINESS<br>ON THE MAP</span>
         <span class="line3">IN 360°</span>
       </h1>
-      <p class="hero-desc">We shoot, edit, and publish professional 360° virtual tours directly to your Google Business Profile — so more customers find you, trust you, and choose you.</p>
+      <p class="hero-desc">We shoot, edit, and publish professional 360° virtual tours directly to your Google Business Profile so more customers find you, trust you, and choose you.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">
           <span>Book a Free Shoot Consultation</span>
